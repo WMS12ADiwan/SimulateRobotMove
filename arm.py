@@ -2,6 +2,8 @@ import pygame
 from pygame.locals import *
 import math
 import os
+import zmq
+
 
 class Segment:
     def __init__(self, x, y, length, index):
@@ -41,7 +43,8 @@ class Segment:
 
     def update(self):
         self.calculate_b()
-        self.print_angle()
+        #self.print_angle()
+        return int(math.degrees(self.angle))
 
     def show(self, screen):
         pygame.draw.line(screen, (255, 255, 255), self.a, self.b, int(self.stroke_weight))
@@ -53,11 +56,21 @@ width, height = 600, 400
 screen = pygame.display.set_mode((width, height))
 clock = pygame.time.Clock()
 
-start = Segment(300, 200, 100, 0)
+seglength = [45*3, 38*3, 9*3]
+start = Segment(300, 200, seglength[0], 0)
 current = start
 
+context = zmq.Context()
+socket = context.socket(zmq.PUB)
+socket.bind("tcp://*:5555")
+
+angels = [0,0,0] #Kopf, Körper, basis
+angCounter = 1
+
+
+
 for i in range(2):
-    next_segment = Segment(current.b.x, current.b.y, 100, i)
+    next_segment = Segment(current.b.x, current.b.y, seglength[i+1], i)
     current.child = next_segment
     next_segment.parent = current
     current = next_segment
@@ -65,8 +78,12 @@ for i in range(2):
 end = current
 base = pygame.Vector2(width / 2, height)
 
+rotation = [0,0,0]
+
+
 running = True
 while running:
+    os.system('cls' if os.name == 'nt' else 'clear')
     for event in pygame.event.get():
         if event.type == QUIT:
             running = False
@@ -76,14 +93,16 @@ while running:
     mouse_pos = pygame.mouse.get_pos()
 
     end.follow(pygame.Vector2(*mouse_pos))
-    end.update()
+    angels[0] = end.update()
 
     next_segment = end.parent
     while next_segment is not None:
         next_segment.follow(next_segment.child.a)
-        next_segment.update()
+        angels[angCounter] = next_segment.update()
         next_segment = next_segment.parent
-
+        angCounter += 1
+    angCounter = 1
+    
     start.set_a(base)
     start.calculate_b()
 
@@ -99,9 +118,28 @@ while running:
     while next_segment is not None:
         next_segment.show(screen)
         next_segment = next_segment.parent
-        
-    os.system('cls' if os.name == 'nt' else 'clear')
+    
+    #Head Arm
+    if (angels[0]>=90):
+        angels[0] = angels[0]-360
+    #Base Arm
+    if (angels[2]>=90):
+        angels[2] = angels[2]-360   
+    #Body Arm
+    angels[1] += 90
+    angels[0] -= angels[1] 
+    if (angels[1]>=180):
+    #    angels[1] = angels[1]+90  
+        angels[1] = angels[1]-360  
+    #    angels[0] -= angels[1] 
 
+    
+  
+  
+    
+    print (angels)
+    socket.send_string(str(angels))
+    
     pygame.display.flip()
     clock.tick(60)
 
