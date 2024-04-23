@@ -1,0 +1,18 @@
+2024-03-06 10:23:19,384 - URBasic_realTimeClientEvent - ERROR - SendProgram: Program Stopped but not finiched!!!
+2024-03-06 10:29:07,800 - URBasic_realTimeClientEvent - ERROR - SendProgram: Program Stopped but not finiched!!!
+2024-03-06 10:29:08,558 - URBasic_realTimeClientEvent - ERROR - SendProgram: Program Stopped but not finiched!!!
+2024-04-10 11:24:16,569 - URBasic_rtdeEvent - ERROR - Lost some RTDE at 1852.0079999999998 - 63.99999999985084 milliseconds since last package
+2024-04-10 11:25:50,100 - URBasic_rtdeEvent - ERROR - Lost some RTDE at 1945.5439999999999 - 96.00000000000364 milliseconds since last package
+2024-04-10 11:25:51,288 - URBasic_rtdeEvent - ERROR - Lost some RTDE at 1946.712 - 56.00000000004002 milliseconds since last package
+2024-04-10 11:25:54,483 - URBasic_rtdeEvent - ERROR - Lost some RTDE at 1949.9199999999998 - 56.00000000004002 milliseconds since last package
+2024-04-10 11:25:55,019 - URBasic_rtdeEvent - ERROR - Lost some RTDE at 1950.28 - 48.00000000000182 milliseconds since last package
+2024-04-10 11:25:55,346 - URBasic_rtdeEvent - ERROR - Lost some RTDE at 1950.7839999999999 - 16.000000000076398 milliseconds since last package
+2024-04-10 11:25:55,756 - URBasic_rtdeEvent - ERROR - Lost some RTDE at 1951.096 - 24.000000000114596 milliseconds since last package
+2024-04-10 11:25:55,808 - URBasic_rtdeEvent - ERROR - Lost some RTDE at 1951.2079999999999 - 23.999999999887223 milliseconds since last package
+2024-04-10 14:01:38,138 - URBasic_realTimeClientEvent - ERROR - SendProgram: Safety Stop
+2024-04-10 14:05:06,310 - URBasic_realTimeClientEvent - ERROR - SendProgram: Program Stopped but not finiched!!!
+2024-04-10 14:05:54,606 - URBasic_realTimeClientEvent - ERROR - SendProgram: Safety Stop
+2024-04-10 14:11:18,554 - URBasic_realTimeClientEvent - ERROR - SendProgram: Safety Stop
+2024-04-10 14:16:35,523 - URBasic_realTimeClientEvent - ERROR - SendProgram: Program Stopped but not finiched!!!
+2024-04-10 14:20:21,642 - URBasic_rtdeEvent - ERROR - Lost some RTDE at 12415.256 - 40.000000000873115 milliseconds since last package
+2024-04-10 14:30:05,739 - URBasic_rtdeEvent - ERROR - Lost some RTDE at 12999.376 - 40.000000000873115 milliseconds since last package
